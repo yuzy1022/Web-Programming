@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hover 활용</title>
+    <style>
+        .text   {
+                    text-shadow: 0 0 10px red, 
+                                 0 0 3px darkred;
+                }
+        .img:hover  {
+                        background-image: url("img/front.png");
+                        box-shadow: 2px 2px 2px black,
+                                    0 0 5px blue,
+                                    0 0 2px darkblue;
+                    }
+    </style>
+</head>
+<body>
+    <h3 class="text">hover 활용</h3>
+    <hr>
+    마우스를 올리면 카드의 앞면이 보인다.
+    <img src="img/back.png" class="img" width="706" height="1024">
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>수목원</title>
+<style>
+    #menubar 
+    {
+        padding-left: 50px;
+        padding-top : 10px;
+        padding-bottom: 10px;
+        width : 750px;
+    }
+    #menubar ul 
+    { /* 여백과 패딩 모두 0 */
+        margin : 0;
+        padding : 0;
+        width : 800px;
+    }
+    #menubar ul li 
+    {
+        display : inline-block; /* 새 줄로 넘어가지 않게 */
+        list-style-type : none; /* 마커 삭제 */
+        padding : 0px 15px; /* top=bottom=0, left=right=15px */ 
+    }
+    #menubar ul li a 
+    {
+        color : black;
+        text-decoration : none; /* 링크 보이지 않게 */
+    }
+    #menubar ul li a:hover 
+    {
+        color : violet;  /* 마우스 올라 갈 때 색 */
+    }
+    #info1
+    {
+        background-color: rgb(238, 255, 205);
+        border: 1px solid green;
+        padding: 10px;
+        width: 400px;
+    }
+    #info2
+    {
+        background-color: rgb(238, 255, 205);
+        border: 1px solid green;
+        padding: 10px;
+        width: 940px;
+    }
+    #traffic li
+    {
+        list-style-image: url("img/green.jpg");
+    }
+</style>
+</head>
+<body>
+    <nav id="menubar">
+        <ul>
+            <li><a href="#">수목원소개</a></li>|
+            <li><a href="#">방문안내</a></li>|
+            <li><a href="#">관람안내</a></li>|
+            <li><a href="#">개인/단체 체험</a></li>|
+            <li><a href="#">고객센터</a></li>|
+            <li><a href="#">공지사항</a></li>
+        </ul>
+    </nav>
+    <img src="img/수목원.jpg" alt="수목원" width="1000px" height="225px">
+    <br>
+    <h1>방문안내</h1>
+    <hr width="1000px" align="left">
+    <dl>
+        <dt><h3>1. 이용요금</h3>
+            <dd id="info1">평일 : 500원<br>주말 : 1000원
+        <dt><h3>2. 교통안내</h3>
+        <dd>
+            <ul id="traffic">
+                <li>버스 :
+                <li>택시 : 
+            </ul>
+        </dd>
+        <dt><h3>3. 관람 유의사항</h3>
+            <dd id="info2">목원을 방문하시는 관람객들이 보다 다양한 방법으로 수목원을 즐길 수 있도록 여러 가지 주제와 코스를 선정하였습니다. 
+                가족과 방문하는 수목원. 연인과 방문하는 수목원, 때로는 혼자 방문하는 수목원 등 다양한 매력을 품은 걷고 싶은 길을 소개합니다.
+    </dl>
+    
+</body>
+</html>

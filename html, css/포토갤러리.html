@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포토갤러리</title>
+    <style>
+        div
+        {
+            color: rgb(55, 325, 128);
+            color: blue;
+            color: #2F2525;
+            color: #000000;
+        }
+        body
+        {
+            background-color:  #eeeeee;
+            font-family: "돋음";
+            font-size: 12px;
+            color: #666666;
+        }
+        li
+        {
+            list-style-type :none;
+        }
+        .clear
+        {
+            clear: both;
+        }
+        #header
+        {
+            width: 800px;
+            height: 40px;
+        }
+        #logo
+        {
+            float: left;
+            font-size: 16px;
+            color: #3e2b23;
+            padding: 10px 0 0 30px;
+        }
+        #left
+        {
+            width: 150px;
+            height: 600px;
+            float: left;
+            background-color: #343333;
+            color: #e2e2e2;
+        }
+        #left h2
+        {
+            font-weight: normal;
+            padding: 20px 0 0 30px;
+        }
+        #left ul
+        {
+            font-size: 14px;
+            padding: 10px 10px 5px 25px;
+        }
+        #left li
+        {
+            padding: 3px;
+        }
+        #right
+        {
+            width: 650px;
+            height: 600px;
+            float: left;
+            background-color: #252525;
+        }
+        #main_title
+        {
+            width: 572px;
+            padding: 10px;
+            border: solid 5px #444444;
+            margin: 24px 0 0 24px;
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        #main_img
+        {
+            padding: 15px 0 0 24px;
+        }
+        .sub-img img:hover
+        {
+            border: solid 3px #ffffff;
+        }
+        input
+        {
+            display: none;
+        }
+        label
+        {
+            font-size: 0;;
+        }
+        .img-area
+        {
+            width: 500px;
+            position: relative;
+            height: 550px;
+        }
+        .img-area .sub-img
+        {
+            position: absolute;
+            top: 380px;
+            left: 15%;
+        }
+        .img-area .big-img img
+        {
+            display: none;
+        }
+        input:checked .big-img img 
+        {
+            display: none;
+        }
+        input:nth-child(1):checked ~ .big-img img:nth-child(1) { display: inline-block; }
+        input:nth-child(2):checked ~ .big-img img:nth-child(2) { display: inline-block; }
+        input:nth-child(3):checked ~ .big-img img:nth-child(3) { display: inline-block; }
+        input:nth-child(4):checked ~ .big-img img:nth-child(4) { display: inline-block; }
+        input:nth-child(5):checked ~ .big-img img:nth-child(5) { display: inline-block; }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="logo">PHOTO GALLERY</div>
+    </div>
+    <div id="left">
+        <h2>포토갤러리</h2>
+        <ul>
+            <li class="submenu">+ 풍경</li>
+            <li class="subment">+ 일상</li>
+            <li><a href="photo_gallery2.html">+ 인물</a></li>
+            <li class="submenu">+ 가족</li>
+        </ul>
+    </div>
+    <div id="right">
+        <div id="main_title">
+            풍경 사진
+        </div>
+        <ul id="photos">
+            <div class="img-area">
+                <input type="radio" id="rad1" name="img_tab" checked>
+                <input type="radio" id="rad2" name="img_tab">
+                <input type="radio" id="rad3" name="img_tab">
+                <input type="radio" id="rad4" name="img_tab">
+                <input type="radio" id="rad5" name="img_tab">
+
+                <div class="sub-img">
+                    <label for="rad1">
+                        <img src="img/item.jpg" alt="이미지" width="80" height="80">
+                    </label>
+                    <label for="rad2">
+                        <img src="img/item2.jpg" alt="이미지" width="80" height="80">
+                    </label>
+                    <label for="rad3">
+                        <img src="img/item3.jpg" alt="이미지" width="80" height="80">
+                    </label>
+                    <label for="rad4">
+                        <img src="img/item4.jpg" alt="이미지" width="80" height="80">
+                    </label>
+                    <label for="rad5">
+                        <img src="img/item5.jpg" alt="이미지" width="80" height="80">
+                    </label>
+                </div>
+                <div class="big-img">
+                    <img src="img/item.jpg" width="550" height="350" alt="큰 이미지">
+                    <img src="img/item2.jpg" width="550" height="350" alt="큰 이미지">
+                    <img src="img/item3.jpg" width="550" height="350" alt="큰 이미지">
+                    <img src="img/item4.jpg" width="550" height="350" alt="큰 이미지">
+                    <img src="img/item5.jpg" width="550" height="350" alt="큰 이미지">
+                </div>
+            </div>
+        </ul>
+    </div>
+</body>
+</html>
