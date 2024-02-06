@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+    <script>
+      window.onload = function() {
+        let back = document.getElementById('back');
+        let next = document.getElementById('next');
+        let large = document.getElementById('large');
+        let small = document.getElementById('small');
+        let numberImg = document.getElementById('numberImg');
+        let numberSize = document.getElementById('numberSize');
+        let picture = document.getElementById('picture');
+        let div1 = document.getElementById('div1');
+        let scrwidth = window.innerWidth;  //브라우저 화면 너비
+        let scrheight = window.innerHeight-div1.clientHeight;  //브라우저 화면높이 - div태그의 높이
+        let imgBtn = document.getElementById('imgBtn');
+        let inputImg = document.getElementById('inputImg');
+        let sizeBtn = document.getElementById('sizeBtn');
+        let inputSize = document.getElementById('inputSize');
+
+
+        //프리로드
+        var images = new Array();
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image();
+					images[i].src = preload.arguments[i];
+				}
+			}
+			preload("./1.jpg", "./2.jpg", "./3.jpg", "./4.jpg", "./5.jpg", "./6.jpg",
+              "./7.jpg", "./8.jpg", "./9.jpg", "./10.jpg");
+
+
+        resize(); //1.jpg 리사이즈
+
+        //resize : 이미지를 사용자의 브라우저 화면에 맞게 크기조정
+        function resize(){
+          let max = picture.naturalWidth*2;
+          let min = Math.round(picture.naturalWidth/100); //사진 원본크기의 1%와 200%
+          picture.style.minWidth = `${min}`;
+          picture.style.maxWidth = `${max}`;  //이미지 최대, 최소 너비 지정
+          picture.width = scrwidth;  // 이미지너비를 브라우저 화면너비에 맞춤
+          let height = picture.height;
+          let width = picture.width;
+          if(height > scrheight){
+          picture.width = `${(scrheight/height)*width}`;
+        } //이미지 너비 변경후 높이가 웹브라우저 화면 높이보다 클 경우 화면에 맞추기
+
+          numberSize.innerText = `${imgRatio()}%`;
+          inputSize.value = imgRatio(); //사진확대 비율 수정
+        }
+
+        /*imgRatio : 매개변수 넣고 호출하면 해당 매개변수 %값으로 이미지 크기변경
+        매개변수 없이 쓰면 현재 이미지 크기가 원본에 비해 몇 % 크기인지 리턴*/
+        function imgRatio (value){
+          let orgWidth = picture.naturalWidth;
+          let height = picture.height;
+          let width = picture.width;
+          let numberSize = document.getElementById('numberSize');
+          if(value == undefined){
+              return Math.round((width/orgWidth)*100);
+            }
+
+          else if(value){
+            picture.width = orgWidth*0.01*value;
+            numberSize.innerText = `${imgRatio()}%`;
+            inputSize.value = imgRatio();
+          }
+        }
+
+        /*changeImg : 매개변수 하나만 넣으면 (현재 이미지순서 +매개변수)번째의 이미지로 변환
+        매개변수 두개면 첫번째 매개변수 번째의 이미지로 변환*/
+        function changeImg (value1, value2){
+          let img = parseInt(picture.getAttribute('src'));
+          let numberImg = document.getElementById('numberImg');
+          if(value1 && value2 == undefined){
+            picture.setAttribute('src', `${img + value1}.jpg`);
+            numberImg.innerText = `${img + value1}/10`;
+            inputImg.value = img + value1;
+            resize();
+          }
+          else if(value1 && value2){
+            picture.src = `${value1}.jpg`;
+            numberImg.innerText = `${value1}/10`;
+            resize();
+          }
+        }
+
+        //버튼 누르면 이전 순서의 이미지로 변환하기. 첫번째 이미지 일경우 alert출력
+        back.addEventListener('click', () => {
+          let img = parseInt(picture.getAttribute('src'));
+          if(img > 1){
+            changeImg(-1);
+          }
+          else if(img == 1){
+            alert("첫 이미지 입니다.");
+          }
+        });
+
+        //버튼 누르면 다음 순서의 이미지로 변환. 끝 이미지면 alert출력
+        next.addEventListener('click', () => {
+          let img = parseInt(picture.getAttribute('src'));
+          if(img < 10){
+            changeImg(1);
+          }
+          else if(img == 10){
+            alert("끝 이미지 입니다.");
+          }
+        });
+
+        //numberImg 요소위에서 마우스 휠 돌리면 이미지가 1씩 앞으로, 뒤로 변환
+        numberImg.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          let img = parseInt(picture.getAttribute('src'));
+          if(e.wheelDelta < 0 && img > 1){
+            changeImg(-1);
+          }
+          else if(e.wheelDelta < 0 && img == 1){
+            alert("첫 이미지 입니다.");
+          }
+          else if(e.wheelDelta > 0 && img < 10){
+            changeImg(1);
+          }
+          else if(e.wheelDelta > 0 && img == 10){
+            alert("끝 이미지 입니다.");
+          }
+        });
+
+        //버튼 누르면 10%씩 이미지 크기 줄이기
+        small.addEventListener('click', () => {
+          let size = imgRatio();
+          if(size > 10){
+            imgRatio(imgRatio()-10);
+          }
+          else if(size <= 10 && size > 1){
+            imgRatio(1);
+          }
+          else if(size == 1){
+            alert("최소 크기 입니다.");
+          }
+        });
+
+        //버튼 누르면 10%씩 이미지 크기 늘리기
+        large.addEventListener('click', () => {
+          let size = imgRatio();
+          if(size < 191){
+            imgRatio(imgRatio()+10);
+          }
+          else if(size >= 191 && size < 200){
+            imgRatio(200);
+          }
+          else if(size == 200){
+            alert("최대 크기 입니다.");
+          }
+        });
+
+        //numberSize요소 위에서 마우스 휠 돌리면 이미지 크기가 1%씩 커지게, 작아지게
+        numberSize.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          let size = imgRatio();
+          if(e.wheelDelta < 0 && size > 1){
+            imgRatio(imgRatio()-1);
+          }
+          else if(e.wheelDelta < 0 && size == 1){
+            alert("최소 크기 입니다.");
+          }
+          else if(e.wheelDelta > 0 && size < 200){
+            imgRatio(imgRatio()+1);
+          }
+          else if(e.wheelDelta > 0 && size == 200){
+            alert("최대 크기 입니다.");
+          }
+        });
+
+        //입력창에 1~10 사이의 정수 넣고 버튼 누르면 해당 순서의 이미지로 변환
+        imgBtn.addEventListener('click', () => {
+          let value = parseInt(inputImg.value);
+          if(value > 0 && value < 11){
+            changeImg(value, 1);
+          }
+          else {
+            alert("올바른 값이 아닙니다.");
+          }
+        });
+
+        //입력창에 1~200 사이의 정수 넣고 버튼 누르면 해당 %로 이미지 크기 변환
+        sizeBtn.addEventListener('click', () => {
+          let value = parseInt(inputSize.value);
+          if(value > 0 && value < 201){
+            imgRatio(value);
+          }
+          else {
+            alert("올바른 값이 아닙니다.");
+          }
+        });
+
+      };
+
+    </script>
+  </head>
+  <body>
+    <div id='div1'>
+      <button id='back'>이전 이미지</button>
+      <button id='next'>다음 이미지</button>
+      <h5 id='numberImg' style='display:inline-block'>1/10</h5>
+      <input type='number' id='inputImg' min='1' max='10' step='1' value='1'/>
+      <button id='imgBtn'>이동</button>
+      &nbsp;&nbsp;&nbsp;
+      <button id='small'>축소</button>
+      <button id='large'>확대</button>
+      <h5 id='numberSize' style='display:inline-block'></h5>
+      <input type='number' id='inputSize' min='1' max='200' step='1' value='50'/>
+      <button id='sizeBtn'>크기조정</button>
+    <br>
+    </div>
+    <img id='picture' src='1.jpg' style='height:auto;'> <p>
+  </body>
+</html>

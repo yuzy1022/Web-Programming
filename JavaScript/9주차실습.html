@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <script>
+      let aBook = {
+        title : "Hello! JavaScript",
+        price : 21097,
+        stock : 7,
+        salePrice : 21097,
+        printinfo : function (){
+          for (let p in this){
+            if((p != "printinfo") && (p != "discount") && (p != "sell")){
+              console.log(p + " : " + this[p]);
+            }
+          }
+        },
+        discount : function (x){
+          this.salePrice = this.price * (1-0.01*x);
+        },
+        sell : function(x){
+          if(x<=this.stock){
+            this.stock -= x;
+            alert("책이 " + x + "권 팔렸습니다!")
+          }
+          else{
+            alert("재고가 부족합니다!")
+          }
+        }
+    };
+    aBook.printinfo();
+    aBook.discount(15);
+    aBook.sell(5);
+    aBook.sell(4);
+    aBook.printinfo();
+    </script>
+  </body>
+</html>

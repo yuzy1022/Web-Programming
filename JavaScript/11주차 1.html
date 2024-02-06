@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    이미지를 클릭하면 이미지 정보를 알려줍니다. <p>
+    <img id='picture' src='1.jpg' onclick=getImgInfo()>
+    <script>
+    window.onload = function (){
+      console.log(window.innerHeight, window.innerWidth);
+    function resize (){
+      let width = picture.naturalWidth;
+      let height = picture.naturalHeight;
+      let scrwidth = screen.width;
+      let scrheight = screen.height;
+      console.log(width, height, scrwidth, scrheight);
+      if(width > scrwidth){
+          picture.width = scrwidth;
+          picture.height = Math.round(height * (scrwidth/width));
+        }
+      if (height > scrheight){
+          picture.height = scrheight;
+          picture.width = Math.round(width * (scrheight/height));
+        }
+    }
+
+    resize();
+  }
+      function getImgInfo(){
+        let picture = document.getElementById('picture');
+        let imgFile = picture.getAttribute('src');
+        //picture.setAttribute('height', '100%');
+        let imgWidth = document.getElementById('picture').width;
+        alert(`이미지 파일명 : ${imgFile}\n원본 이미지 너비 : ${picture.naturalWidth}\n원본 이미지 높이 : ${picture.naturalHeight}\n이미지 높이 : ${picture.height}\n이미지 너비 : ${picture.width}`);
+      }
+    </script>
+  </body>
+</html>

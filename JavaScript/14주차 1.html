@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <script>
+      let a = new Array("유재석", "강호동", "하하");
+      let b = new Array("박명수");
+      let c;
+
+      console.log("a =", a);
+      console.log("b =", b);
+
+      c = a.concat(b);
+      console.log("c = a.concat => c =", c);
+      console.log("c = a.concat => a =", a);
+
+      c = a.join();
+      console.log("c = a.join => c =", c);
+      console.log("c = a.join => a =", a);
+
+      c = a.slice(1, 2);
+      console.log("c = a.slice(1, 2) => c =", c);
+      console.log("c = a.slice(1, 2) => a =", a);
+
+      c = a.reverse();
+      console.log("c = a.reverse() => c =", c);
+      console.log("c = a.reverse() => a =", a);
+
+      c = a.sort();
+      console.log("c = a.sort() => c =", c);
+      console.log("c = a.sort() => a =", a);
+
+      c = a.splice(1, 2);
+      console.log("c = a.splice(1, 2) => c =", c);
+      console.log("c = a.splice(1, 2) => a =", a);
+    </script>
+  </body>
+</html>

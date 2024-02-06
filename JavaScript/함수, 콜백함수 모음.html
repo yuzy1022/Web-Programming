@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      let a = new Function("x", "return x;"); //F객체생성
+      b = new Function("x", "return x;");  //F객체생성
+      function c (x) {return x;}  //선언적함수
+      let d = function (x) {return x;}; //익명함수
+      e = function (x) {return x;}; //익명함수
+      let f = (x) => {return x;}; //화살표
+      g = (x) => {return x;}; //화살표
+      let ab = function abc (x){return x;}; //변수 생성한 선언적 함수
+                                        //이렇게 할경우 abc말고 ab로 호출해서 써야한다.
+      ac = function acd (x){return x;}; //마찬가지로 ac로 써야함
+      console.log(a(1), b(2), c(3), d(4), e(5), f(6), g(7), ab(8), ac(9));
+
+      function call (f) {console.log(f(123));}
+      call(h = function(x){return x;});  //변수를 선언해 참조하게한 익명함수
+      call(function (x) {return x;});  //변수 생성 안한 익명함수
+      call(function i (x){return x;});  //선언적 함수
+      call(j = function k (x){return x;}); //변수생성한 선언적함수
+      call( (x) => {return x;}); //변수 생성 안한 화살표함수
+      call(z = new Function("x", "return x;")); //let 안쓴 F객체생성
+      /*함수 호출문 괄호 안에서 let은 못쓰기 때문에 변수를 생성해 참조하는 함수 형태는
+      위와 같이 let없이 써야한다. 근데 변수 생성하는것 자체도 생략할 수 있으니 굳이
+      저렇게 쓸 사람이 있을까 싶다. */
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>

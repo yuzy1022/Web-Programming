@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <img id='picture' src='2.jpg' width='50%'> <p>
+    <button onclick = changeImg(-1)>이전 이미지</button>
+    <button onclick = changeImg(1)>다음 이미지</button>
+    <button onclick = changeImgSize(1)>10% 확대</button>
+    <button onclick = changeImgSize(-1)>10% 축소</button>
+    <script>
+      function changeImg(newImg){
+        let picture = document.getElementById('picture');
+        let img = parseInt(picture.getAttribute('src'));
+        if(newImg < 0 && img > 1){
+          picture.setAttribute('src', `${img - 1}.jpg`);
+          picture.setAttribute('width', '50%');
+        }
+        else if(newImg > 0 && img < 3){
+          picture.setAttribute('src', `${img + 1}.jpg`);
+          picture.setAttribute('width', '50%');
+        }
+        else if(newImg > 0 && img == 3){
+          alert("끝 이미지 입니다.");
+        }
+        else if(newImg < 0 && img == 1){
+          alert("첫 이미지 입니다.");
+        }
+      }
+      function changeImgSize(newsize){
+        let picture = document.getElementById('picture');
+        let size = parseInt(picture.getAttribute('width'));
+
+        if (newsize > 0 && size < 100){
+          picture.setAttribute('width', `${size + 10}%`);
+        }
+        else if(newsize < 0 && size > 10){
+          picture.setAttribute('width', `${size - 10}%`);
+        }
+        else if(newsize < 0 && size == 10){
+          alert("최소 크기 입니다.");
+        }
+        else if(newsize > 0 && size == 100){
+          alert("최대 크기 입니다.");
+        }
+      }
+    </script>
+  </body>
+</html>

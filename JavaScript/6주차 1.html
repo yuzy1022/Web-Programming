@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <script>
+      function power(x,y) {
+        if ((!y && x) && (y != 0)){
+          return x*x;
+        }
+        else if ((x && y) && (y != 0)){
+          let output = 1;
+          for (let i=0; i<y; i++){
+            output *= x;
+          }
+          return output;
+        }
+        else if (x && y==0){
+          return 1;
+        }
+        else {return "값이 입력되지 않았습니다."}
+      }
+      console.log(power(3));
+      console.log(power(5,0));
+      console.log(power(4,4));
+      console.log(power());
+      console.log(power(2,5,6))
+    </script>
+  </body>
+</html>

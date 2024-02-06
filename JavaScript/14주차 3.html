@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <script>
+      let a = [52, 273, 32, 64, 72];
+
+      a.forEach( (item, index) => {
+	       console.log(index + "번째 요소는 " + item + "입니다.");
+        });
+
+      let b = a.map( (item, index) => {
+  	     return item*item;
+        });
+      console.log(b);
+
+      let c = a.filter( (item, index) => {
+    	   return (item % 2 == 0);
+       });
+      console.log(c);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  <script>
+    window.onload = function (){
+      let name = document.getElementById('name');
+      let count=0;
+
+      name.addEventListener('mouseover', () => {
+        if(count == 0){
+          count++;
+          name.style.border = ("1px ridge violet");
+        }
+        else {
+        name.style.borderColor = 'violet';}
+      });
+
+      name.addEventListener('mouseout', () => {
+        name.style.borderColor = 'lightgray';
+      });
+
+      name.addEventListener('mousedown', () => {
+        name.style.fontStyle = 'italic';
+      });
+
+      name.addEventListener('mouseup', () => {
+        name.style.fontStyle = 'normal';
+      });
+
+      name.addEventListener('wheel', (e) => {
+        let width=parseInt(name.style.borderWidth);
+        if (e.wheelDelta < 0 && width > 0){
+          name.style.borderWidth = `${width-1}px`;
+        }
+        if (e.wheelDelta > 0){
+          name.style.borderWidth = `${width+1}px`;
+        }
+      });
+
+    }
+  </script>
+  </head>
+  <body>
+    <h3>2021년 2학기 인터넷 프로그래밍</h3>
+    <hr>
+    <div>컴퓨터 공학과
+      <span id='name' style='display:inline-block'> 2018021097 박상원 </span>
+      과제 제출합니다.
+    </div>
+  </body>
+</html>

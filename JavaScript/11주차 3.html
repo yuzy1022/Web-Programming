@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <h2>간디의 명언</h2>
+    <ul id="uList">
+      <li>네 믿음은 네 생각이 된다.</li>
+      <li>네 생각은 네 말이 된다.</li>
+      <li>네 말은 네 행동이 된다.</li>
+      <li>네 행동은 네 습관이 된다.</li>
+      <li>네 습관은 네 가치가 된다.</li>
+      </ul>
+
+      <button onclick = appendLi()>항목 추가</button>
+      <button onclick = removeLastLi()>항목 제거</button>
+      <button onclick = input()>항목 입력</button>
+
+      <script>
+        function appendLi (){
+          let parent = document.getElementById('uList');
+          let newLi = document.createElement('li');
+          newLi.innerHTML = '네 가치는 네 운명이 된다.';
+          newLi.style.color = 'blue';
+          parent.appendChild(newLi);
+        }
+
+        function removeLastLi(){
+          let items = document.getElementsByTagName('li');
+          let lastItem = items[items.length-1];
+          lastItem.parentElement.removeChild(lastItem);
+        }
+
+        function input (){
+          let parent = document.getElementById('uList');
+          let newLi = document.createElement('li');
+          newLi.innerHTML = prompt();
+          newLi.style.color = 'blue';
+          parent.appendChild(newLi);
+        }
+      </script>
+  </body>
+</html>

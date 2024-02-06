@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>2018021097 박상원</title>
+  </head>
+  <body>
+    <h1 name = "hd"> Header 1 </h1>
+    <h1 class = "hdc"> Header 1 </h1>
+    <h1 name = "hd"> Header 1 </h1>
+    <h1 class = "hdc"> Header 1 </h1>
+    <h2 name = "hd"> Header 2 </h2>
+
+    <script>
+      let headers = document.getElementsByTagName("h1");
+      for (let i in headers){
+        headers[i].style.color = 'orange';
+        headers[i].style.background = 'blue';
+        headers[i].innerHTML = 'from javascript';
+      }
+    </script>
+  </body>
+</html>
